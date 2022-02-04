@@ -22,13 +22,10 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
-# @app.route('/')
+#@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-
-    if request.method == 'POST':
-        return('<h1>AAAAAAAAAAAAAAAAAAA B</h1>')
 	
     return('''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
   
@@ -163,5 +160,6 @@ if __name__ == '__main__':
     # Engine, a webserver process such as Gunicorn will serve the app. You
     # can configure startup instructions by adding `entrypoint` to app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
+	
 # [END gae_python3_app]
 # [END gae_python38_app]
