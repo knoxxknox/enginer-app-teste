@@ -22,9 +22,13 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
+# @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
+
+    if request.method == 'POST':
+        return('<h1>AAAAAAAAAAAAAAAAAAA B</h1>')
 	
     return('''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
   
