@@ -22,8 +22,8 @@ from flask import Flask
 app = Flask(__name__)
 
 
-#@app.route('/', methods=['GET', 'POST'])
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
+#@app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
 	
