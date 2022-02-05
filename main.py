@@ -14,8 +14,10 @@
 
 # [START gae_python38_app]
 # [START gae_python3_app]
-from flask import Flask
 
+from flask import Flask
+from google.cloud import bigquery
+import os
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -26,7 +28,35 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-	
+
+
+
+from google.cloud import bigquery
+import os
+
+
+    path = (str(os.getcwd().replace("\\", "/")) + "/")
+
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path + "event-hub-335220-978d832f765e.json"
+
+    # Construct a BigQuery client object.
+    client = bigquery.Client()
+
+
+    query1 = """
+        SELECT * FROM `event-hub-335220.tabela_json.teste_02`
+    """
+
+    query_job = client.query(query1)
+
+    for row in query_job:
+        teste_json = (row)
+        break
+
+    teste = row[1]['SchemeTransactionKey']
+    print(teste)
+
+
     return('''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
   
   <head><link rel="stylesheet" type="text/css" hs-webfonts="true" href="https://fonts.googleapis.com/css?family=Lato|Lato:i,b,bi">
@@ -109,7 +139,7 @@ def hello():
               </td>
 
               <tr>
-                <td width="500" align="right" style="color: white;" bgcolor="#3d3d3d"><p>TOKEN_01</p></td>
+                <td width="500" align="right" style="color: white;" bgcolor="#3d3d3d"><p>teste</p></td>
             </tr>
 
 
