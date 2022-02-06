@@ -65,8 +65,7 @@ def teste():
     d=dados['AccountType'][0]
     e=dados['Type'][0]
 
-    return('''<h1>ESTE PROCESSO ESTÁ FAZENDO UMA CHAMADA EM NO BIGQUERY E EXECUTNDO UM CONSULTA</h1>
-	   <p></p><h2>DATA: ''' + a + '''</h2><p></p><h2>NOME: ''' + b + '''</h2><p></p><h2>DATA_VENC: ''' + c + '''</h2><p></p><h2>TIPO: ''' + d + '''</h2><p></p><h2>TESTE: ''' + e + '''</h2>''')
+    return('''<h1>ESTE PROCESSO ESTÁ FAZENDO UMA CHAMADA EM NO BIGQUERY E EXECUTNDO UM CONSULTA</h1><p></p><h2>DATA: ''' + str(a) + '''</h2><p></p><h2>NOME: ''' + b + '''</h2><p></p><h2>DATA_VENC: ''' + c + '''</h2><p></p><h2>TIPO: ''' + d + '''</h2><p></p><h2>TESTE: ''' + e + '''</h2>''')
 
 
 
