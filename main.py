@@ -18,9 +18,10 @@
 # [START gae_python3_app]
 
 from flask import Flask
-from google.cloud import storag
+from google.cloud import storage
 import pandas as pd
 from google.cloud import bigquery
+import os
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -72,9 +73,7 @@ def hello():
     <meta property="og:title" content="Email template">
     
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <style type="text/css">
@@ -143,15 +142,10 @@ def hello():
                 <h2> Report operacional de análise do Deploy do Autorizador <p><h2>Versão TOKEN_VERSAO </h2></p> </h2>
                          
               </td>
-
               <tr>
                 <td width="500" align="right" style="color: white;" bgcolor="#00bd19"><p>Desde às TOKEN_DATA  </p></td>
             </tr>
-
-
         </table>
-
-
         <tr>
           <td>
               <table id="content-3" cellpadding="0" cellspacing="0" align="center">
@@ -164,9 +158,6 @@ def hello():
               </table>
           </td>
           </tr>
-
-
-
   
     <! First Row --> 
   
@@ -177,12 +168,10 @@ def hello():
             <p>
               O deploy está sendo analisado através de quatro KPIs, sendo eles: Conversão, erros, tempo das aplicações e volume. A cada 30 minutos um novo report será gerado, explorando pontos as métricas e sinalisando pontos de atenção caso existam.
             </p>
-
       </td> 
           </tr>
   </table>
   
-
   <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
     <tr>
       <td>
@@ -195,8 +184,6 @@ def hello():
     </tr>
     <td> Este gráfico representa a conversão de cada máquina em todos os DCs.</td>
  </table>
-
-
   <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
     <tr>
       <td>
@@ -209,8 +196,6 @@ def hello():
     </tr>
    <td> Este gráfico representa a volumetria de cada máquina em todos os DCs.</td>
  </table>
-
-
   <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
     <tr>
       <td>
@@ -221,10 +206,7 @@ def hello():
      </td>
       <td> Este gráfico representa a corelação de tempos das aplicações.</td>
     </tr>
-
  </table>
-
-
   <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
     <tr>
       <td>
@@ -235,11 +217,7 @@ def hello():
      </td>
       <td> Este gráfico representa a volumetria de erros por máquina em todos os DCs.</td>
     </tr>
-
  </table>
-
-
-
               
   </table>
      
