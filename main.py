@@ -58,7 +58,15 @@ def teste():
     cred_json="infinite-deck-340122-5ec3e9c74ff3.json"
 
     dados = consultaDados(query,cred_json)	
-    return("<h1>BLA BLA BLA... TÔ TESTANDO 1234... " + dados['Name'][0] + "</h1>")
+
+    a=dados['AuthorizationTimestamp'][0]
+    b=dados['Name'][0]
+    c=dados['ExpirationDate'][0]
+    d=dados['AccountType'][0]
+    e=dados['Type'][0]
+
+    return('''<h1>ESTE PROCESSO ESTÁ FAZENDO UMA CHAMADA EM NO BIGQUERY E EXECUTNDO UM CONSULTA</h1>
+	   <p></p><h2>DATA: ''' + a + '''</h2><p></p><h2>NOME: ''' + b + '''</h2><p></p><h2>DATA_VENC: ''' + c + '''</h2><p></p><h2>TIPO: ''' + d + '''</h2><p></p><h2>TESTE: ''' + e + '''</h2>''')
 
 
 
