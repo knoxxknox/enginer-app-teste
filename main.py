@@ -52,7 +52,7 @@ def teste():
         
         FROM `infinite-deck-340122.dset_testes.TESTE`
         
-        WHERE Transaction.TransactionKey=45511700128772
+        WHERE Transaction.TransactionKey=45511700128746
        '''
 
     cred_json="infinite-deck-340122-5ec3e9c74ff3.json"
