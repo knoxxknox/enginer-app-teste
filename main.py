@@ -18,15 +18,59 @@
 # [START gae_python3_app]
 
 from flask import Flask
+from google.cloud import storag
+import pandas as pd
+from google.cloud import bigquery
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
 
 
+# Busca quedenciais da conta de serviço para que não precisem ser declaradas via arquivo
+def implicit():
+    #from google.cloud import storage
+
+    # If you don't specify credentials when constructing the client, the
+    # client library will look for credentials in the environment.
+    storage_client = storage.Client()
+
+    # Make an authenticated API request
+    buckets = list(storage_client.list_buckets())
+    #print(buckets)
+
+
+# Bsuca de dados executando query na tabela
+def consultaDados(query):
+    '''Consulta de dados em tabela'''
+
+    implicit()
+    
+    client = bigquery.Client()
+    df_result = client.query(query).to_dataframe()
+    
+    return(df_result)
+    
+    
+    
+
 @app.route('/teste')
 def teste():
-    return("<h1>BLA BLA BLA... TÔ TESTANDO 1234...</h1>")
+	
+    query ='''
+        SELECT Transaction.TransactionDate.AuthorizationTimestamp, Transaction.TransactionMerchant.Name, 
+        Transaction.AccountNumber.ExpirationDate, Transaction.AccountType, 
+        Transaction.TransactionPointOfInteraction.Type
+        
+        FROM `infinite-deck-340122.dset_testes.table_01`
+        
+        WHERE Transaction.TransactionKey=45511700128772
+       '''
+
+    dados = consultaDados(query)	
+    return("<h1>BLA BLA BLA... TÔ TESTANDO 1234... " + dados['Name'][0] + "</h1>")
+
+
 
 @app.route('/')
 def hello():
