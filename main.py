@@ -23,6 +23,11 @@ from flask import Flask
 # called `app` in `main.py`.
 app = Flask(__name__)
 
+
+@app.route('/teste')
+def teste():
+    return("<h1>BLA BLA BLA... TÔ TESTANDO 1234...</h1>")
+
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
