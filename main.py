@@ -35,9 +35,9 @@ from google.cloud import bigquery
 import os
 
 
-    path = (str(os.getcwd().replace("\\", "/")) + "/")
+    @path = (str(os.getcwd().replace("\\", "/")) + "/")
 
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path + "event-hub-335220-978d832f765e.json"
+    @os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path + "event-hub-335220-978d832f765e.json"
 
     # Construct a BigQuery client object.
     client = bigquery.Client()
