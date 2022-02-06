@@ -22,6 +22,7 @@ from google.cloud import storage
 import pandas as pd
 from google.cloud import bigquery
 import os
+import pyarrow
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
