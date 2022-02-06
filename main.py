@@ -16,8 +16,6 @@
 # [START gae_python3_app]
 
 from flask import Flask
-from google.cloud import bigquery
-import os
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -68,8 +66,6 @@ import os
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta http-equiv="refresh" content="500" >
     
     <style type="text/css">
    
@@ -122,7 +118,7 @@ import os
       <table align="center" role="presentation">
         <tr>
           <td>
-          <a class="subtle-link" href="#">knox - Python</a>
+          <a class="subtle-link" href="#">Stone - Operações Autorizador - Analytics</a>
           </td>
           <tr>
       </table>
@@ -132,14 +128,14 @@ import os
          <table role="presentation" width="100%">
             <tr>
          
-              <td bgcolor="#000000" align="center" style="color: white;">
+              <td bgcolor="#00bd19" align="center" style="color: white;">
                 
-                <h2> K N O X <p><h2>V1.0</h2></p> </h2>
+                <h2> Report operacional de análise do Deploy do Autorizador <p><h2>Versão TOKEN_VERSAO </h2></p> </h2>
                          
               </td>
 
               <tr>
-                <td width="500" align="right" style="color: white;" bgcolor="#3d3d3d"><p>teste</p></td>
+                <td width="500" align="right" style="color: white;" bgcolor="#00bd19"><p>Desde às TOKEN_DATA  </p></td>
             </tr>
 
 
@@ -151,7 +147,7 @@ import os
               <table id="content-3" cellpadding="0" cellspacing="0" align="center">
               <tr>
                   <td width="250" valign="top" bgcolor="#ffffff" style="padding:5px;">
-                  <img src="data:image/png;base64,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" width="230" height="110"  />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Stone_pagamentos.png" width="230" height="110"  />
                   </td>
                   <td width="15"></td>
               </tr>
@@ -159,30 +155,112 @@ import os
           </td>
           </tr>
 
-    <! First Row --> 
-  <p></p>
-  <h2 align="center">AztwP#$12D</h2>
-  <p></p>
-  
-  <table align="center"> 
-    <tr >
-      <td>
-      <form method="POST" class="form-horizontal">
-        <div class="control-group">
-            <div class="controls form-inline">
 
-                <label for="inputKey">User</label>
-                <input type="text" class="input-small" placeholder="Your name" name="inputKey">
+
+  
+    <! First Row --> 
+  
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
+     <tr>
+       <td>
+        <h2> Escopo da análise</h2>
+            <p>
+              O deploy está sendo analisado através de quatro KPIs, sendo eles: Conversão, erros, tempo das aplicações e volume. A cada 30 minutos um novo report será gerado, explorando pontos as métricas e sinalisando pontos de atenção caso existam.
+            </p>
+
+      </td> 
+          </tr>
+  </table>
+  
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
+    <tr>
+      <td>
+        <h3>Conversão</h3>
+        <tr>
+		TOKEN_01
+		TOKEN_02
+        </tr>
+     </td>
+    </tr>
+    <td> Este gráfico representa a conversão de cada máquina em todos os DCs.</td>
+ </table>
+
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
+    <tr>
+      <td>
+        <h3>Volume</h3>
+        <tr>
+		TOKEN_03
+		TOKEN_04
+        </tr>
+     </td>
+    </tr>
+   <td> Este gráfico representa a volumetria de cada máquina em todos os DCs.</td>
+ </table>
+
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
+    <tr>
+      <td>
+        <h3>Tempo</h3>
+        <tr>
+		TOKEN_05
+        </tr>
+     </td>
+      <td> Este gráfico representa a corelação de tempos das aplicações.</td>
+    </tr>
+
+ </table>
+
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0px" style="padding: 30px 30px 10px 30px;">
+    <tr>
+      <td>
+        <h3>Erros Máquina</h3>
+        <tr>
+		TOKEN_06
+        </tr>
+     </td>
+      <td> Este gráfico representa a volumetria de erros por máquina em todos os DCs.</td>
+    </tr>
+
+ </table>
+
+
+
+              
+  </table>
+     
+        <! Banner Row --> 
+  <table role="presentation" bgcolor="#EAF0F6" width="100%" style="margin-top: 50px;" >
+      <tr>
+          <td align="center" style="padding: 30px 30px;">
+            
+         <h2> Time de operações do Autorizador - Analytics </h2>
+            <p>
+              Este documento foi gerado por uma automação de análises de dados das informações transacionais do Autorizador - Stone. Em caso de dívida por gentileza nos acionar através do seguinte endereço: 
       
-                <label for="inputValue">Password</label>
-                <input type="password" class="input-small" placeholder="Your password" name="inputValue">
-            </div>
-        </div>
-        <input type="submit"  value="Send">
-    </form>
-  </td>
-  </tr>
-</table>''')
+              </p>
+              <a href="#">auth.analytics@stone.com.br</a>      
+          </td>
+          </tr>
+      </table>
+  
+        <! Unsubscribe Footer --> 
+      
+  <table role="presentation" bgcolor="#F5F8FA" width="100%" >
+      <tr>
+          <td align="left" style="padding: 30px 30px;">
+            <p style="color:#99ACC2"> Stone CO &hearts; Autorizador - Analytics </p>
+    
+          </td>
+          </tr>
+      </table> 
+      </div>
+    </body>
+      </html>''')
 
 
 if __name__ == '__main__':
