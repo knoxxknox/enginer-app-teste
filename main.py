@@ -27,32 +27,18 @@ from google.cloud import bigquery
 app = Flask(__name__)
 
 
-# Busca quedenciais da conta de serviço para que não precisem ser declaradas via arquivo
-def implicit():
-    #from google.cloud import storage
-
-    # If you don't specify credentials when constructing the client, the
-    # client library will look for credentials in the environment.
-    storage_client = storage.Client()
-
-    # Make an authenticated API request
-    buckets = list(storage_client.list_buckets())
-    #print(buckets)
-
-
 # Bsuca de dados executando query na tabela
-def consultaDados(query):
+def consultaDados(query,cred_json):
     '''Consulta de dados em tabela'''
 
-    implicit()
+    caminho = str(os.getcwd().replace("\\", "/")) + "/"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = caminho + cred_json
     
     client = bigquery.Client()
     df_result = client.query(query).to_dataframe()
     
     return(df_result)
-    
-    
-    
+
 
 @app.route('/teste')
 def teste():
@@ -67,7 +53,9 @@ def teste():
         WHERE Transaction.TransactionKey=45511700128772
        '''
 
-    dados = consultaDados(query)	
+    cred_json="infinite-deck-340122-5ec3e9c74ff3.json"
+
+    dados = consultaDados(query,cred_json)	
     return("<h1>BLA BLA BLA... TÔ TESTANDO 1234... " + dados['Name'][0] + "</h1>")
 
 
