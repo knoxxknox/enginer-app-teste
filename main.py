@@ -50,7 +50,7 @@ def teste():
         Transaction.AccountNumber.ExpirationDate, Transaction.AccountType, 
         Transaction.TransactionPointOfInteraction.Type
         
-        FROM `infinite-deck-340122.dset_testes.table_01`
+        FROM `infinite-deck-340122.dset_testes.TESTE`
         
         WHERE Transaction.TransactionKey=45511700128772
        '''
